@@ -4,6 +4,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.math.BigDecimal;
+
 /**
  * Unit test for simple App.
  */
@@ -34,6 +36,8 @@ public class AppTest
     public void testApp()
     {
         App app = new App();
-        assertEquals("Hello World!", app.getMessage());
+        app.scan("tshirt");
+        BigDecimal expectedTotal = new BigDecimal("2.60");
+        assertEquals(expectedTotal, app.calculateTotal());
     }
 }

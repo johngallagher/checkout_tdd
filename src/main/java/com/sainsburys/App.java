@@ -25,7 +25,7 @@ public class App
         System.out.println("£" + app.calculateTotal());
     }
 
-    private BigDecimal calculateTotal() {
+    public BigDecimal calculateTotal() {
         BigDecimal total = new BigDecimal(0);
         for (String product : this.products) {
             total = total.add(this.getPrice(product));
@@ -35,7 +35,7 @@ public class App
 
     private BigDecimal getPrice(String product) {
         if (product.equals("tshirt")) {
-            return new BigDecimal("0.60");
+            return new BigDecimal("2.60");
         } else if (product.equals("mug")) {
             return new BigDecimal("3.10");
         } else {
@@ -43,11 +43,7 @@ public class App
         }
     }
 
-    private void scan(String product) {
+    public void scan(String product) {
         this.products.add(product);
-    }
-
-    public String getMessage() {
-        return "Hello World!";
     }
 }
