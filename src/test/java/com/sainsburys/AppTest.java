@@ -34,7 +34,8 @@ public class AppTest
         App app = new App();
         app.scan("tshirt");
         app.scan("mug");
-        BigDecimal expectedTotal = new BigDecimal("5.70");
+        app.scan("tshirt");
+        BigDecimal expectedTotal = new BigDecimal("8.30");
         assertEquals(expectedTotal, app.calculateTotal());
     }
 }
