@@ -14,8 +14,11 @@ public class App {
   public static void main(String[] products) {
   }
 
-  public void scan(String string) {
-    this.products.add(string);
+  public void scan(String rawProducts) {
+    String[] products = rawProducts.split(",");
+    for (String product : products) {
+      this.products.add(product);
+    }
   }
 
   public BigDecimal total() {
@@ -27,12 +30,12 @@ public class App {
   }
 
   private BigDecimal priceForProduct(String product) {
-    if (product == "heart") {
+    if (product.equals("heart")) {
       return new BigDecimal("9.25");
-    } else if (product == "cufflinks") {
+    } else if (product.equals("cufflinks")) {
       return new BigDecimal("45.00");
     } else {
-      return new BigDecimal("0");
+      throw new RuntimeException("Product " + product + " does not have a price.");
     }
   }
 }

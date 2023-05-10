@@ -11,18 +11,25 @@ public class AppTest extends TestCase {
     return new TestSuite(AppTest.class);
   }
 
-  public static void testScanningALavendarHeartCalculatesTotal() {
+  public void testScanningALavendarHeartCalculatesTotal() {
     App app = new App();
     app.scan("heart");
     BigDecimal expectedTotal = new BigDecimal("9.25");
     assertEquals(expectedTotal, app.total());
   }
 
-  public static void testScanningHeartAndCufflinksAddsPricesTogether() {
+  public void testScanningHeartAndCufflinksAddsPricesTogether() {
     App app = new App();
     app.scan("heart");
     app.scan("cufflinks");
     BigDecimal expectedTotal = new BigDecimal("54.25");
     assertEquals(expectedTotal, app.total());
+  }
+
+  public static void testAllowsForCallingMultipleProductsInScan() {
+  App app = new App();
+  app.scan("heart,cufflinks");
+  BigDecimal expectedTotal = new BigDecimal("54.25");
+  assertEquals(expectedTotal, app.total());
   }
 }
