@@ -17,4 +17,12 @@ public class AppTest extends TestCase {
     BigDecimal expectedTotal = new BigDecimal("9.25");
     assertEquals(expectedTotal, app.total());
   }
+
+  public static void testScanningHeartAndCufflinksAddsPricesTogether() {
+    App app = new App();
+    app.scan("heart");
+    app.scan("cufflinks");
+    BigDecimal expectedTotal = new BigDecimal("54.25");
+    assertEquals(expectedTotal, app.total());
+  }
 }
