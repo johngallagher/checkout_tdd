@@ -21,11 +21,22 @@ public class App {
     }
   }
 
+  private BigDecimal calculateDiscount() {
+    long numberOfHearts = this.products.stream().filter(n -> n.equals("heart")).count();
+    if (numberOfHearts > 1) {
+      BigDecimal discountPerHeart = new BigDecimal("0.75");
+      return discountPerHeart.multiply(new BigDecimal(numberOfHearts));
+    } else {
+      return new BigDecimal("0");
+    }
+  }
+
   public BigDecimal total() {
     BigDecimal runningTotal = new BigDecimal("0");
     for (String product : this.products) {
       runningTotal = runningTotal.add(this.priceForProduct(product));
     }
+    runningTotal = runningTotal.subtract(this.calculateDiscount());
     return runningTotal;
   }
 

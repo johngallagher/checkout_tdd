@@ -27,9 +27,23 @@ public class AppTest extends TestCase {
   }
 
   public static void testAllowsForCallingMultipleProductsInScan() {
-  App app = new App();
-  app.scan("heart,cufflinks");
-  BigDecimal expectedTotal = new BigDecimal("54.25");
-  assertEquals(expectedTotal, app.total());
+    App app = new App();
+    app.scan("heart,cufflinks");
+    BigDecimal expectedTotal = new BigDecimal("54.25");
+    assertEquals(expectedTotal, app.total());
+  }
+
+  public static void testReducesTwoHeartsTo850EachToSellMore() {
+    App app = new App();
+    app.scan("heart,heart");
+    BigDecimal expectedTotal = new BigDecimal("17.00");
+    assertEquals(expectedTotal, app.total());
+  }
+  
+  public static void testReducesThreeHeartsTo850EachToSellMore() {
+    App app = new App();
+    app.scan("heart,heart,heart");
+    BigDecimal expectedTotal = new BigDecimal("25.50");
+    assertEquals(expectedTotal, app.total());
   }
 }
