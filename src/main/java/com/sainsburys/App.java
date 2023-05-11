@@ -45,6 +45,8 @@ public class App {
       return new BigDecimal("9.25");
     } else if (product.equals("cufflinks")) {
       return new BigDecimal("45.00");
+    } else if (product.equals("tshirt")) {
+      return new BigDecimal("19.95");
     } else {
       throw new RuntimeException("Product " + product + " does not have a price.");
     }

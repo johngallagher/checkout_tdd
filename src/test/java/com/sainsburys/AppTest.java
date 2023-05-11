@@ -14,36 +14,37 @@ public class AppTest extends TestCase {
   public void testScanningALavendarHeartCalculatesTotal() {
     App app = new App();
     app.scan("heart");
-    BigDecimal expectedTotal = new BigDecimal("9.25");
-    assertEquals(expectedTotal, app.total());
+    assertEquals(new BigDecimal("9.25"), app.total());
   }
 
   public void testScanningHeartAndCufflinksAddsPricesTogether() {
     App app = new App();
     app.scan("heart");
     app.scan("cufflinks");
-    BigDecimal expectedTotal = new BigDecimal("54.25");
-    assertEquals(expectedTotal, app.total());
+    assertEquals(new BigDecimal("54.25"), app.total());
   }
 
   public static void testAllowsForCallingMultipleProductsInScan() {
     App app = new App();
     app.scan("heart,cufflinks");
-    BigDecimal expectedTotal = new BigDecimal("54.25");
-    assertEquals(expectedTotal, app.total());
+    assertEquals(new BigDecimal("54.25"), app.total());
   }
 
   public static void testReducesTwoHeartsTo850EachToSellMore() {
     App app = new App();
     app.scan("heart,heart");
-    BigDecimal expectedTotal = new BigDecimal("17.00");
-    assertEquals(expectedTotal, app.total());
+    assertEquals(new BigDecimal("17.00"), app.total());
   }
   
   public static void testReducesThreeHeartsTo850EachToSellMore() {
     App app = new App();
     app.scan("heart,heart,heart");
-    BigDecimal expectedTotal = new BigDecimal("25.50");
-    assertEquals(expectedTotal, app.total());
+    assertEquals(new BigDecimal("25.50"), app.total());
+  }
+
+  public static void testTotalsUpHeartsCufflinksAndTshirts() {
+    App app = new App();
+    app.scan("heart,cufflinks,tshirt");
+    assertEquals(new BigDecimal("74.20"), app.total());
   }
 }
