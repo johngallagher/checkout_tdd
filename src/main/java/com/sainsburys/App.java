@@ -1,6 +1,7 @@
 package com.sainsburys;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class App {
@@ -34,10 +35,19 @@ public class App {
   public BigDecimal total() {
     BigDecimal runningTotal = new BigDecimal("0");
     for (String product : this.products) {
-      runningTotal = runningTotal.add(this.priceForProduct(product));
+      runningTotal = runningTotal.add(priceForProduct(product));
     }
-    runningTotal = runningTotal.subtract(this.calculateDiscount());
+    runningTotal = runningTotal.subtract(calculateDiscount());
+    runningTotal = runningTotal.subtract(calculateLargeOrderDiscount(runningTotal));
     return runningTotal;
+  }
+
+  private BigDecimal calculateLargeOrderDiscount(BigDecimal runningTotal) {
+    BigDecimal largeOrderDiscount = new BigDecimal("0");
+    if (runningTotal.compareTo(new BigDecimal("60")) > 0) {
+      largeOrderDiscount = runningTotal.multiply(new BigDecimal("0.1")).setScale(2, RoundingMode.HALF_UP);
+    }
+    return largeOrderDiscount;
   }
 
   private BigDecimal priceForProduct(String product) {
