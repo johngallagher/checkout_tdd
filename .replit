@@ -1,6 +1,6 @@
 compile = "mvn compile"
 run = "mvn test"
-# run = "mvn exec:java -Dexec.args='tshirt tshirt mug'"
+# run = "mvn exec:java -Dexec.args='tshirt,tshirt,mug'"
 hidden = ["**/*.class"]
 
 [packager]
