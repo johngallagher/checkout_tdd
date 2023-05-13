@@ -1,9 +1,9 @@
 # Checkout
 
 * Sainsbury's want us to create a checkout app for them
+* It's supposed to calculate the total price of the products bought
 * Three products with two discounts to be built in
 * See details below
-* The app should have two methods - `#scan` and `#calculateTotal`
 * Products can be represented as Strings
 
 ## Discounts
