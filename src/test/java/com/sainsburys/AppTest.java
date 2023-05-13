@@ -3,6 +3,7 @@ package com.sainsburys;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import java.math.BigDecimal;
 
 public class AppTest extends TestCase {
   public static Test suite() {
@@ -21,5 +22,13 @@ public class AppTest extends TestCase {
     App app = new App();
     app.scan(cufflinks);
     assertEquals("45.00", app.calculateTotal());
+  }
+
+  public void testScanningTwoCuffLinksGivesTheCustomerALargeOrderDiscount() {
+    String cufflinks = "cufflinks";
+    App app = new App();
+    app.scan(cufflinks);
+    app.scan(cufflinks);
+    assertEquals("81.00", app.calculateTotal());
   }
 }
